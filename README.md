@@ -16,6 +16,14 @@
 
 > **Beta:** 개인용 유틸리티에서 시작한 초기 공개 버전입니다. 중요한 화면을 캡처하기 전 결과를 확인해 주세요.
 
+## 유지보수 안내
+
+MyScreenShort는 개인적인 필요에서 시작했으며 여유 시간에 유지보수하는 프로젝트입니다.
+
+이슈와 Pull Request는 환영하지만, 답변·수정·릴리스가 늦어질 수 있으며 처리 일정을 보장하지 않습니다.
+
+**Maintenance Notice:** MyScreenShort is a personal project maintained in my spare time. Issues and pull requests are welcome, but responses, fixes, and releases may be delayed, and no maintenance schedule is guaranteed.
+
 ## 주요 기능
 
 - `Command + Shift + S`, `Control + Shift + S` 전역 단축키
