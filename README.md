@@ -42,11 +42,11 @@
 git clone https://github.com/itsent-lab/MyScreenShort.git
 cd MyScreenShort
 Scripts/build-app.sh
-cp -R dist/MyScreenShort-Mac.app /Applications/
-open /Applications/MyScreenShort-Mac.app
+cp -R dist/MyScreenShort.app /Applications/
+open /Applications/MyScreenShort.app
 ```
 
-앱 번들은 `dist/MyScreenShort-Mac.app`에 생성됩니다. 공개 Beta는 소스 빌드를 기준으로 하며, 빌드 스크립트는 로컬 테스트를 위한 ad-hoc 서명을 적용합니다.
+앱 번들은 `dist/MyScreenShort.app`에 생성됩니다. 공개 Beta는 소스 빌드를 기준으로 하며, 빌드 스크립트는 로컬 테스트를 위한 ad-hoc 서명을 적용합니다.
 
 ## 사용법
 

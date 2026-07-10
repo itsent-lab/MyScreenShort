@@ -69,6 +69,27 @@ final class LaunchAgentService {
         launchAgentsDirectoryURL.appendingPathComponent("\(label).plist")
     }
 
+    func migrateLegacyRegistrationIfNeeded() {
+        let oldAppName = "MyScreenShort-Mac.app"
+        let needsMigration = allLaunchAgentURLs.contains { url in
+            guard let savedPlist = try? String(contentsOf: url, encoding: .utf8) else {
+                return false
+            }
+            return savedPlist.contains(oldAppName)
+        }
+
+        guard needsMigration else {
+            return
+        }
+
+        do {
+            try enable()
+            AppLogService.write("Migrated launch agent registration to MyScreenShort")
+        } catch {
+            AppLogService.write("Launch agent migration failed: \(error)")
+        }
+    }
+
     private var allLaunchAgentURLs: [URL] {
         [launchAgentURL] + legacyLabels.map {
             launchAgentsDirectoryURL.appendingPathComponent("\($0).plist")

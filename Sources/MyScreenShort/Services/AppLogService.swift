@@ -2,14 +2,14 @@ import Foundation
 
 enum AppLogService {
     static func write(_ message: String) {
-        NSLog("[MyScreenShort-Mac] %@", message)
-        write(message, to: URL(fileURLWithPath: "/tmp/MyScreenShort-Mac.log"))
+        NSLog("[MyScreenShort] %@", message)
+        write(message, to: URL(fileURLWithPath: "/tmp/MyScreenShort.log"))
 
         let fileManager = FileManager.default
         let directoryURL = fileManager.homeDirectoryForCurrentUser
             .appendingPathComponent("Library", isDirectory: true)
             .appendingPathComponent("Application Support", isDirectory: true)
-            .appendingPathComponent("MyScreenShort-Mac", isDirectory: true)
+            .appendingPathComponent("MyScreenShort", isDirectory: true)
         let logURL = directoryURL.appendingPathComponent("app.log")
         do {
             try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true)

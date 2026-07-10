@@ -3,19 +3,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "MyScreenShortMac",
+    name: "MyScreenShort",
     platforms: [
         .macOS(.v13)
     ],
     products: [
         .executable(
-            name: "MyScreenShortMac",
-            targets: ["MyScreenShortMac"]
+            name: "MyScreenShort",
+            targets: ["MyScreenShort"]
         )
     ],
     targets: [
         .executableTarget(
-            name: "MyScreenShortMac"
+            name: "MyScreenShort"
         )
     ],
     swiftLanguageVersions: [.v5]

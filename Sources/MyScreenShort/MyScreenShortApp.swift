@@ -1,19 +1,19 @@
 import AppKit
 
-private var appDelegate: MyScreenShortMacApp?
+private var appDelegate: MyScreenShortApp?
 
 @main
-enum MyScreenShortMacMain {
+enum MyScreenShortMain {
     static func main() {
         let application = NSApplication.shared
-        let delegate = MyScreenShortMacApp()
+        let delegate = MyScreenShortApp()
         appDelegate = delegate
         application.delegate = delegate
         application.run()
     }
 }
 
-final class MyScreenShortMacApp: NSObject, NSApplicationDelegate, NSMenuDelegate {
+final class MyScreenShortApp: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private var statusItem: NSStatusItem?
     private var lastCaptureStatusItem: NSStatusItem?
     private var lastCaptureImage: NSImage?
@@ -39,6 +39,7 @@ final class MyScreenShortMacApp: NSObject, NSApplicationDelegate, NSMenuDelegate
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
 
+        launchAgentService.migrateLegacyRegistrationIfNeeded()
         setupStatusItem()
         setupWorkspaceActivationTracking()
         scheduledCaptureService.onPendingStateChanged = { [weak self] _ in
@@ -99,13 +100,13 @@ final class MyScreenShortMacApp: NSObject, NSApplicationDelegate, NSMenuDelegate
         menu.addItem(quitMenuItem)
 
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-        if let image = NSImage(systemSymbolName: "camera.fill", accessibilityDescription: "MyScreenShort-Mac") {
+        if let image = NSImage(systemSymbolName: "camera.fill", accessibilityDescription: "MyScreenShort") {
             image.isTemplate = true
             statusItem?.button?.image = image
         } else {
             statusItem?.button?.title = "S"
         }
-        statusItem?.button?.toolTip = "MyScreenShort-Mac\n클릭: 즉시 캡처·예약 영역 캡처·사용법"
+        statusItem?.button?.toolTip = "MyScreenShort\n클릭: 즉시 캡처·예약 영역 캡처·사용법"
         statusItem?.menu = menu
 
         refreshAutoStartMenu()
@@ -279,7 +280,7 @@ final class MyScreenShortMacApp: NSObject, NSApplicationDelegate, NSMenuDelegate
     @objc private func showCaptureHelp() {
         NSApp.activate(ignoringOtherApps: true)
         let alert = NSAlert()
-        alert.messageText = "MyScreenShort-Mac 사용법"
+        alert.messageText = "MyScreenShort 사용법"
         alert.informativeText = """
         즉시 캡처
         • Command+Shift+S 또는 Control+Shift+S

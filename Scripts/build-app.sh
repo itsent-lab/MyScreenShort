@@ -3,8 +3,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-APP_NAME="MyScreenShortMac"
-APP_DIR="$ROOT_DIR/dist/MyScreenShort-Mac.app"
+APP_NAME="MyScreenShort"
+APP_DIR="$ROOT_DIR/dist/MyScreenShort.app"
 CONTENTS_DIR="$APP_DIR/Contents"
 MACOS_DIR="$CONTENTS_DIR/MacOS"
 RESOURCES_DIR="$CONTENTS_DIR/Resources"
@@ -53,7 +53,7 @@ cat > "$CONTENTS_DIR/Info.plist" <<PLIST
     <key>CFBundleIconFile</key>
     <string>AppIcon</string>
     <key>CFBundleName</key>
-    <string>MyScreenShort-Mac</string>
+    <string>MyScreenShort</string>
     <key>NSHumanReadableCopyright</key>
     <string>Copyright © 2026 itsent-lab. MIT License.</string>
     <key>CFBundlePackageType</key>
